@@ -5,7 +5,7 @@ import React from "react";
 import axios from "axios";
 import { HoverEffect } from "@/components/ui/card-hover-effect";
 import { Button } from "@/components/ui/button";
-import { Loader2, LoaderCircle, PlusCircle } from "lucide-react";
+import { Loader2, HomeIcon, PlusCircle } from "lucide-react";
 import Link from "next/link";
 import { Vortex } from "@/components/ui/vortex";
 import { useQuery } from "@tanstack/react-query";
@@ -101,21 +101,34 @@ export default   function UserBlog() {
     //     </div>
     //   </Vortex>
     // </div>
+
     <div className="fixed inset-0 w-full h-full bg-black">
-      {/* <Vortex className="absolute inset-0 w-full h-full bg-transparent">
-         // implemet it during build
-      </Vortex> */}
+       <Vortex className="absolute inset-0 w-full h-full bg-transparent">
+          
+      
         <div className="max-w-6xl mx-auto px-4 py-8 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center mb-8">
             <h1 className="text-3xl font-bold text-white">
               Your Blogs!
             </h1>
-            <Link href="/createBlogPage">
+              <div className=" hover:transition-transform  duration-300 ease-in-out hover:scale-105 hover:border-spacing-2 ">
+              <Link href="/createBlogPage">
               <Button className="flex items-center space-x-2">
-                <PlusCircle className="h-5 w-5" />
+                <PlusCircle className="h-5 w-5 hover:scale-150 border-spacing-1 border-y-white" />
                 <span>New Blog</span>
               </Button>
             </Link>
+              </div>
+           
+             <div  className=" hover:transition-transform  duration-300 ease-in-out hover:scale-105 hover:border-spacing-2 ">
+             <Link href="/home">
+              <Button className="flex items-center space-x-2 border-spacing-1 border-y-white ">
+                  <HomeIcon  className="h-5 w-5 " ></HomeIcon>
+                <span>Home</span>
+              </Button>
+            </Link>
+             </div>
+           
           </div>
           
           {/* Handle Loading State */}
@@ -165,6 +178,7 @@ export default   function UserBlog() {
             />
           )}
         </div>
+        </Vortex> 
     </div>
   );
 }

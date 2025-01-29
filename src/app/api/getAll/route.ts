@@ -39,6 +39,7 @@ export async function GET(req: NextRequest) {
 
             controller.enqueue(`data:${JSON.stringify(blogs)}\n\n`);
           } catch (error) {
+            console.log("Error fetching all blogs for home page", error);
             controller.enqueue(
               `data:${JSON.stringify({
                 message: "Error fetching all blogs for home page",

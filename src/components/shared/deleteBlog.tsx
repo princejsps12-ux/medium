@@ -4,7 +4,7 @@ import axios, { AxiosError } from "axios";
 import { Trash2, Loader2 } from "lucide-react";
 import { useRouter } from "next/navigation";
 
-import { toast, useToast } from "@/hooks/use-toast";
+import { toast } from "@/hooks/use-toast";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useSession } from "next-auth/react";
 
@@ -32,7 +32,7 @@ export default function DeleteBlog({ params }: { params: { id: string } }) {
       });
       router.push("/userBlogs");
     },
-    onError: (error: any) => {
+    onError: (error: AxiosError) => {
       //    const axiosError= error as AxiosError;
       //    if( axiosError.response?.status ==400){
       //     toast({

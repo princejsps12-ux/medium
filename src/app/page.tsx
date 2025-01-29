@@ -1,14 +1,7 @@
 "use client";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+
 import { AuroraBackground } from "@/components/ui/aurora-background";
 import { motion } from "framer-motion";
 
@@ -19,53 +12,30 @@ export default function Home() {
         <nav className="flex justify-between items-center">
           <h1 className="text-2xl font-bold text-purple-400">BlogVerse</h1>
           <div className="space-x-4">
-            <Button variant="ghost">
+            {/* <Button variant="outline">
               <Link
                 href={"/sign-in"}
-                className="text-purple-400 border-purple-400 hover:bg-purple-400 hover:text-white"
+                className= "text-purple-400 border-purple-400 hover:bg-purple-400 hover:text-white"
               >
                 Sign In
               </Link>
-            </Button>
+            </Button> */}
             <Button
               variant="outline"
-              className="text-purple-400 border-purple-400 hover:bg-purple-400 hover:text-white"
+              className=" bg-black dark:bg-white rounded-full w-fit text-white dark:text-black px-4 py-2  hover:bg-slate-400 hover:text-white hover:cursor-pointer   hover:transition-transform  duration-300 ease-in-out hover:scale-105 "
             >
-              Get Started
+             <Link href={'/sign-up'}>
+             
+              Get Started,
+              Sign up!
+              </Link>
             </Button>
           </div>
         </nav>
       </header>
 
       <main className="container mx-auto px-4">
-        {/* <section className="py-20 text-center">
-          <h2 className="text-5xl font-bold mb-6 text-white">Welcome to BlogVerse</h2>
-          <p className="text-xl mb-8 text-gray-400">Discover stories, thinking, and expertise from writers on any topic.</p>
-          <Button className="bg-green-500 hover:bg-green-600 text-white">Start Reading</Button>
-        </section> */}
-
-        {/* <section className="py-16">
-          <h3 className="text-3xl font-bold mb-8 text-center text-white">Featured Posts</h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[1, 2, 3].map((i) => (
-              <Card key={i} className="bg-gray-800 border-gray-700">
-                <CardHeader>
-                  <Image src={`/placeholder.svg?height=200&width=400`} alt="Blog post thumbnail" width={400} height={200} className="rounded-t-lg" />
-                </CardHeader>
-                <CardContent>
-                  <CardTitle className="text-xl font-semibold mb-2 text-purple-400">Exploring the Future of AI</CardTitle>
-                  <CardDescription className="text-gray-400">
-                    A deep dive into the latest advancements in artificial intelligence and their potential impact on society.
-                  </CardDescription>
-                </CardContent>
-                <CardFooter>
-                  <Button variant="link" className="text-blue-400 hover:text-blue-300">Read More</Button>
-                </CardFooter>
-              </Card>
-            ))}
-          </div>
-        </section> */}
-
+       
         <AuroraBackground>
           <motion.div
             initial={{ opacity: 0.0, y: 40 }}
@@ -84,7 +54,7 @@ export default function Home() {
               Explore the world of blogs and share your own stories.
             </div>
             <Link href={"/sign-in"}>
-            <button className="bg-black dark:bg-white rounded-full w-fit text-white dark:text-black px-4 py-2">
+            <button className="bg-black dark:bg-white rounded-full w-fit text-white dark:text-black px-4 py-2  hover:bg-slate-400 hover:text-white hover:cursor-pointer hover:scale-150  hover:transition-transform .2s ease-in-out 0s ">
             Explore! 
             </button>
             </Link>

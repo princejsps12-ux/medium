@@ -18,6 +18,7 @@ export default auth((req) => {
     return NextResponse.next();
 });
 
+ 
 export const config = {
     matcher: ['/', '/sign-in', '/sign-up', '/home','/api/checkAuthor/:path*','/api/createBlog'],
 };

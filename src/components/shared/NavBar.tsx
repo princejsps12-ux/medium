@@ -10,22 +10,22 @@ export default function NavBar() {
   return (
     <div>
       <nav
-        className="flex justify-between  gap-4 p-2 
-        bg-gradient-to-br from-blue-400 via-blue-600 to-purple-700/50
-        hover:from-black hover:via-blue-950 hover:to-black
-        transition-all duration-500 ease-in-out
-        hover:shadow-md hover:shadow-blue-500/50"
+        className="flex justify-between items-center gap-4 p-5 mt-5
+  border-b border-gray-600/50 
+  bg-gradient-to-r from-gray-900/50 to-gray-800/50
+  backdrop-blur-sm
+  transition-all duration-500 ease-in-out
+  hover:shadow-2xl hover:shadow-blue-500/50 
+  rounded-xl sticky top-0 z-50
+  mx-4  
+        "
       >
         <UserBlogs />
         <CreateBlog />
-         <div className="gap-2 flex items-center ">
-          <p className="font-bold">Welcome {session.data?.user?.name}!</p>
-          <div>
-          {session.data?.user && <Logout />}
-          </div>
-          
-         </div>
-      
+        <div className="gap-2 flex items-center text-white ">
+          <p className="font-bold ">Welcome {session.data?.user?.name}!</p>
+          <div>{session.data?.user && <Logout />}</div>
+        </div>
       </nav>
     </div>
   );

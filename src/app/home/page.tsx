@@ -1,138 +1,4 @@
-// "use client";
-// import { useSession } from "next-auth/react";
-// import React from "react";
-// import NavBar from "@/components/shared/NavBar";
-// import { AuroraBackground } from "@/components/ui/aurora-background";
-// import { motion } from "framer-motion";
-// import { Loader2 } from "lucide-react";
-// import { useQuery } from "@tanstack/react-query";
-// import axios from "axios";
-// import CardDemo from "@/components/blocks/cards-demo-1";
-// import { Card } from "@/components/ui/card";
-
-// const fetchBlogs = async () => {
-//   const { data } = await axios.get("/api/getAll");
-//   return data.response;
-// };
-// export default function DashBoard() {
-//   const {
-//     data: blogs,
-//     isLoading,
-//     error,
-//   } = useQuery({
-//     queryKey: ["blogs"],
-//     queryFn: fetchBlogs,
-//   });
-
-//   console.log("this is the blogs firm line 20", blogs);
-//   if (isLoading) return <p>Loading blogs...</p>;
-//   if (error) return <p>Something went wrong {error.message}</p>;
-//   return (
-//     <div className="min-h-screen h-full w-full fixed inset-0 flex flex-col bg-gradient-to-b from-gray-800 to-blue-950">
-//       <NavBar />
-
-//       <div className=" m-auto flex justify-center items-center bg-gray-700 w-3/4 h-3/4 ">
-//         <div className="backdrop-blur-sm  flex flex-col justify-center items-center   bg-white/30  /* Changed from bg-white to add transparency */ m-5 rounded-lg w-3/4 h-4/5">
-
-//           <div>
-//             <h1>Latest Blogs</h1>
-//             <ul>
-//               {blogs?.map((blog: any) => (
-//                 <li key={blog.id}>
-//                   <h2>{blog.title}</h2>
-//                   <p>{blog.content}</p>
-//                   <small>By {blog.author.name}</small>
-//                 </li>
-//               ))}
-//             </ul>
-//           </div>
-
-//         </div>
-//       </div>
-//     </div>
-//   );
-// }
-// 'use client'
-
-// import { useQuery } from "@tanstack/react-query"
-// import axios from "axios"
-// import { Loader2 } from 'lucide-react'
-// import NavBar from "@/components/shared/NavBar"
-//  import CardDemo from "@/components/blocks/cards-demo-2"
-// import { cn } from "@/lib/utils"
-
-// const fetchBlogs = async () => {
-//   const { data } = await axios.get("/api/getAll")
-//   return data.response
-// }
-
-// export default function DashBoard() {
-//   const {
-//     data: blogs,
-//     isLoading,
-//     error,
-//   } = useQuery({
-//     queryKey: ["blogs"],
-//     queryFn: fetchBlogs,
-//   })
-
-//   return (
-//     <div className="min-h-screen  h-full w-full bg-gradient-to-b from-gray-800 to-blue-950">
-//       <NavBar />
-
-//       <div className="container mx-auto px-4 py-8">
-//         <h1 className="text-3xl font-bold text-white mb-6">Latest Blogs</h1>
-
-//         {isLoading ? (
-//           <div className="flex justify-center items-center h-64">
-//             <Loader2 className="h-8 w-8 animate-spin text-white" />
-//           </div>
-//         ) : error ? (
-//           <p className="text-red-500 text-center">Something went wrong: {error.message}</p>
-//         ) : (
-//           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-//             {blogs?.map((blog: any) => (
-//                 <div className="max-w-xs w-full group/card">
-//                 <div
-//                   className={cn(
-//                     " cursor-pointer overflow-hidden relative card h-96 rounded-md shadow-xl  max-w-sm mx-auto backgroundImage flex flex-col justify-between p-4",
-//                     "bg-[url(https://images.unsplash.com/photo-1544077960-604201fe74bc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1651&q=80)] bg-cover"
-//                   )}
-//                 >
-//                   <div className="absolute w-full h-full top-0 left-0 transition duration-300 group-hover/card:bg-black opacity-60"></div>
-//                   <div className="flex flex-row items-center space-x-4 z-10">
-//                     {/* <Image
-//                       height="100"
-//                       width="100"
-//                       alt="Avatar"
-//                       src="/manu.png"
-//                       className="h-10 w-10 rounded-full border-2 object-cover"
-//                     /> */}
-//                     <div className="flex flex-col">
-//                       <p className="font-normal text-base text-gray-50 relative z-10">
-//                         {blog.author.name}
-//                       </p>
-//                       <p className="text-sm text-gray-400">{ new Date( blog.createdAt).toLocaleDateString() }</p>
-//                     </div>
-//                   </div>
-//                   <div className="text content">
-//                     <h1 className="font-bold text-xl md:text-2xl text-gray-50 relative z-10">
-//                       {blog.title}
-//                     </h1>
-//                     <p className="font-normal text-sm text-gray-50 relative z-10 my-4">
-//                        {blog.content}
-//                     </p>
-//                   </div>
-//                 </div>
-//               </div>
-//             ))}
-//           </div>
-//         )}
-//       </div>
-//     </div>
-//   )
-// }
-
+ 
 "use client";
 
 import { useQuery } from "@tanstack/react-query";
@@ -140,13 +6,33 @@ import axios from "axios";
 import { Loader2 } from "lucide-react";
 import NavBar from "@/components/shared/NavBar";
 import { cn } from "@/lib/utils";
-import Image from "next/image";
-import { Vortex } from "@/components/ui/vortex";
 import Link from "next/link";
-
+import { Button } from "@/components/ui/button";
+import { motion } from "framer-motion";
+import { WavyBackground } from "@/components/ui/wavy-background";
+ type blogtype={
+    id: string;
+    title: string;
+    content: string;
+    published: boolean;
+    authorId: string;
+    postUrl: string;
+    createdAt: string;
+    updatedAt: string;
+    author: {name:string, email:string}
+ }
 const fetchBlogs = async () => {
   const { data } = await axios.get("/api/getAll");
-  return data.response.sort((a:any,b:any)=>new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
+
+  return data.response
+    .map((blog: blogtype) => ({
+      ...blog,
+      postUrl: blog.postUrl?.startsWith("blob:") ? null : blog.postUrl, // Remove Blob URLs
+    }))
+    .sort(
+      (a: blogtype, b: blogtype) =>
+        new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+    );
 };
 
 export default function DashBoard() {
@@ -158,70 +44,109 @@ export default function DashBoard() {
     queryKey: ["blogs"],
     queryFn: fetchBlogs,
   });
-       
-  return (
-   
-      <div className="min-h-screen h-full w-full bg-gradient-to-b from-gray-800 to-blue-950">
-        <NavBar />
 
+  console.log("These are the blogs fetched from db:");
+  console.log(blogs);
+
+  return (
+    <div className="relative min-h-screen">
+      <WavyBackground className="fixed inset-0" />
+      <NavBar />
+      <div className="relative z-10">
         <div className="container mx-auto px-4 py-8">
-          <h1 className="text-3xl font-bold text-white mb-6">Latest Blogs</h1>
+          <div className="flex justify-between items-center mb-8">
+            <motion.h1
+              className="text-4xl font-bold text-white animate-updown"
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+            >
+              Latest Blogs
+            </motion.h1>
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5 }}
+            >
+              <Button className="animate-updown bg-gradient-to-r from-slate-500 to-slate-700 hover:from-blue-500 hover:to-blue-800 text-white font-bold py-2 px-4 rounded-full transform transition duration-300 ease-in-out hover:scale-105">
+                <Link href="/paymentPage">Donate Now!</Link>
+              </Button>
+            </motion.div>
+          </div>
 
           {isLoading ? (
             <div className="flex justify-center items-center h-64">
-              <Loader2 className="h-8 w-8 animate-spin text-white" />
+              <Loader2 className="h-12 w-12 animate-spin text-white" />
             </div>
           ) : error ? (
-            <p className="text-red-500 text-center">
-              Something went wrong: {error.message}
-            </p>
+            <motion.p
+              className="text-red-500 text-center text-xl"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.5 }}
+            >
+              Something went wrong: {(error as Error).message}
+            </motion.p>
           ) : (
-            <div className="space-y-5 p-3">
-              {blogs?.map((blog: any) => (
-                
-                <div key={blog.id} className=" mx-28 w-3/4 group/card">
-
-                   <Link href={`/blog/${blog.id}`}>
-                  <div
-                    className={cn(
-                      "cursor-pointer overflow-hidden relative card h-48 rounded-md shadow-xl flex flex-col justify-between p-4",
-                      "bg-[url(https://images.unsplash.com/photo-1544077960-604201fe74bc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1651&q=80)] bg-cover"
-                    )}
-                  >
-                    <div className="absolute w-full h-full top-0 left-0 transition duration-300 group-hover/card:bg-black opacity-60"></div>
-                    <div className="flex flex-row items-center space-x-4 z-10">
-                      <Image
-                        height="40"
-                        width="40"
-                        alt="Avatar"
-                        src="/placeholder.svg"
-                        className="h-10 w-10 rounded-full border-2 object-cover"
-                      />
-                      <div className="flex flex-col">
-                        <p className="font-normal text-base text-gray-50 relative z-10">
-                          {blog.author.name}
-                        </p>
-                        <p className="text-sm text-gray-300">
-                          {new Date(blog.createdAt).toLocaleDateString()}
+            <motion.div
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, staggerChildren: 0.1 }}
+            >
+              {blogs?.map((blog: blogtype) => (
+                <motion.div
+                  key={blog.id}
+                  className="group"
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <Link href={`/blog/${blog.id}`}>
+                    <div
+                      className={cn(
+                        "cursor-pointer overflow-hidden relative card h-96 rounded-md shadow-xl max-w-sm mx-auto flex flex-col justify-between p-4 bg-cover bg-center",
+                        !blog.postUrl && "bg-gradient-to-br from-gray-800 to-blue-900"
+                      )}
+                      style={
+                        blog.postUrl
+                          ? {
+                              backgroundImage: `url(${blog.postUrl})`,
+                              backgroundPosition: "center",
+                              backgroundRepeat: "no-repeat",
+                              backgroundSize: "cover",
+                            }
+                          : undefined
+                      }
+                    >
+                      <div className="absolute inset-0 bg-black opacity-50 transition duration-300 group-hover:opacity-30"></div>
+                      <div className="flex flex-row items-center space-x-4 z-10">
+                        <div className="flex flex-col">
+                          <p className="text-sm text-gray-300">
+                            {new Date(blog.createdAt).toLocaleDateString("en-US", {
+                              year: "numeric",
+                              month: "long",
+                              day: "numeric",
+                            })}
+                          </p>
+                          <p className="text-bold text-white underline">by {blog.author.name}</p>
+                        </div>
+                      </div>
+                      <div className="text content mt-4">
+                        <h2 className="font-bold text-2xl text-white relative z-10 mb-3 group-hover:underline">
+                          {blog.title}
+                        </h2>
+                        <p className="font-normal text-sm text-gray-200 relative z-10 line-clamp-3">
+                          {blog.content}
                         </p>
                       </div>
                     </div>
-                    <div className="text content">
-                      <h2 className="font-bold text-xl md:text-2xl text-gray-50 relative z-10 mb-2">
-                        {blog.title}
-                      </h2>
-                      <p className="font-normal text-sm text-gray-50 relative z-10 line-clamp-2">
-                        {blog.content.length>50?blog.content.substring(0,100) + "...":blog.content}
-                      </p>
-                    </div>
-                  </div>
-                   </Link>
-                </div>
+                  </Link>
+                </motion.div>
               ))}
-            </div>
+            </motion.div>
           )}
         </div>
       </div>
-  
+    </div>
   );
 }

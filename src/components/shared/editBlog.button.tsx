@@ -3,8 +3,6 @@
 import { Button } from "../ui/button"
 import { FilePenLine } from 'lucide-react';
 import Link from "next/link";
-import { useParams } from "next/navigation";
-
 export default function EditBlogButton({params}:{params:{id:string}}){
      const blogId = params.id || ""
           return (

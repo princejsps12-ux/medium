@@ -8,7 +8,7 @@ export async function PUT(req: NextRequest){
         const currentSession = await auth()
         console.log(`this is the currentsesion`,currentSession)
 
-         const {postUpdateId, newTitle, newContent }= await req.json(); // new content 
+         const {postUpdateId, newTitle, newContent ,newpostUrl}= await req.json(); // new content 
              
          //checking if the post even exists or not
          const postCheck = await prisma.post.findUnique({
@@ -32,7 +32,8 @@ export async function PUT(req: NextRequest){
             },
             data:{
                 title:newTitle,
-                content:newContent
+                content:newContent,
+                postUrl:newpostUrl
             }
          })
 

@@ -7,7 +7,7 @@ export default function CreateBlog() {
   return (
     <>
     <Link href={"/createBlogPage"}>
-      <Button>CreateBlog</Button>
+      <Button>Create new Blog!</Button>
     </Link>
     </>
     

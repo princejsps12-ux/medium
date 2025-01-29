@@ -3,9 +3,11 @@ import type { Config } from "tailwindcss";
 const {
 	default: flattenColorPalette,
   } = require("tailwindcss/lib/util/flattenColorPalette");
-   darkMode: ["class"]
+    
+
+  darkMode: ["class"]
 const config: Config = {
-   
+    
     content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -65,8 +67,12 @@ const config: Config = {
 	animation:{
 		aurora: "aurora 60s linear infinite",
 		move: "move 5s linear infinite",
+		updown: "up-down 2s ease-in-out infinite",
 		
 	},
+	// animations: {
+    //     'up-down': 'upDown 2s ease-in-out infinite',
+    //   },
 	keyframes: {
         aurora: {
           from: {
@@ -79,7 +85,11 @@ const config: Config = {
 		 move:{
 			  "0%":{transform:"translateX(-200px)"},
 			  "100%":{transform:"translateX(200px)"}
-		 }
+		 },
+		 updown: {
+			'0%, 100%': { transform: 'translateY(0)' },
+			'50%': { transform: 'translateY(-20px)' },
+		  }
       },
   },
   plugins: [require("tailwindcss-animate"),addVariablesForColors],

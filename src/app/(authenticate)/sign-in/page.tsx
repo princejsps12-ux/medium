@@ -1,5 +1,5 @@
 'use client'
-import { useEffect, useState } from "react"
+import {  useState } from "react"
 import { useRouter } from "next/navigation"
 import Link from "next/link"
 import { signIn } from "next-auth/react"
@@ -26,9 +26,6 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
-import { Checkbox } from "@/components/ui/checkbox"
-import { setTimeout } from "timers/promises"
-
 const signInSchema = z.object({
   identifier: z.string().min(1, "Username or email is required"),
   password: z.string().min(1, "Password is required"),
@@ -42,7 +39,7 @@ export default function SignInPage() {
   const router = useRouter()
   const [isSubmitting, setIsSubmitting] = useState(false)
 
-  const form = useForm<SignInFormValues>({
+  const formHook = useForm<SignInFormValues>({
     resolver: zodResolver(signInSchema),
     defaultValues: {
       identifier: "",
@@ -76,7 +73,7 @@ export default function SignInPage() {
       router.replace('/home')
 
     } catch (error) {
-      console.error("signin error",error)
+      console.log("signin error",error)
       toast({
         title: "Oops!",
         description: "Something went wrong. Please try again.",
@@ -95,10 +92,10 @@ export default function SignInPage() {
           <CardDescription className="text-center text-gray-400">Enter your credentials to access your account</CardDescription>
         </CardHeader>
         <CardContent>
-          <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+          <Form {...formHook}>
+            <form onSubmit={formHook.handleSubmit(onSubmit)} className="space-y-4">
               <FormField
-                control={form.control}
+                control={formHook.control}
                 name="identifier"
                 render={({ field }) => (
                   <FormItem>
@@ -117,7 +114,7 @@ export default function SignInPage() {
                 )}
               />
               <FormField
-                control={form.control}
+                control={formHook.control}
                 name="password"
                 render={({ field }) => (
                   <FormItem>
@@ -136,7 +133,7 @@ export default function SignInPage() {
                   </FormItem>
                 )}
               />
-              <FormField
+              {/* <FormField
                 control={form.control}
                 name="rememberMe"
                 render={({ field }) => (
@@ -158,7 +155,7 @@ export default function SignInPage() {
                     </div>
                   </FormItem>
                 )}
-              />
+              /> */}
               <Button
                 type="submit"
                 className="w-full bg-amber-500 hover:bg-amber-600 text-gray-900 font-semibold transition-all duration-300 ease-in-out"
@@ -180,7 +177,7 @@ export default function SignInPage() {
           </Link>
           <p className="text-sm text-gray-400">
              Don't have an account?{" "}
-            <Link href="/sign-up" className="text-amber-400 hover:text-amber-300 font-semibold transition-colors">
+            <Link href='/sign-up' className="text-amber-400 hover:text-amber-300 font-semibold transition-colors">
               Sign up <ArrowRight className="inline h-4 w-4" />
             </Link>
           </p>
