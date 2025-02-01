@@ -292,7 +292,7 @@
 
 import { useParams, useRouter } from "next/navigation"
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query"
-import axios from "axios"
+import axios, { AxiosError } from "axios"
 import { updateBlogSchema } from "@/validation/updateBlogSchema"
 import { z } from "zod"
 import { useForm } from "react-hook-form"
@@ -310,7 +310,7 @@ import { Textarea } from "@/components/ui/textarea"
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Loader2 } from 'lucide-react'
-import React, { use } from "react"
+import React from "react"
 
 export default function UpdateBlogPage() {
   const params = useParams()
@@ -365,7 +365,8 @@ export default function UpdateBlogPage() {
       })
       router.push(`/userBlogs`)
     },
-    onError: (error: any) => {
+    onError: (error: AxiosError) => {
+      console.log('this is the  error at updateblog.tsx',error)
       toast({
         title: "Error",
         description: "Failed to update blog. Please try again.",

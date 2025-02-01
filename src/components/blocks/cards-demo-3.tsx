@@ -67,7 +67,7 @@ const Skeleton = () => {
 
   useEffect(() => {
     animate(sequence, {
-      // @ts-ignore
+      // @ts-expect-error  : dont know why is this neccesaary , an outsourced component
       repeat: Infinity,
       repeatDelay: 1,
     });

@@ -176,7 +176,7 @@ export default function SignInPage() {
             Forgot your password?
           </Link>
           <p className="text-sm text-gray-400">
-             Don't have an account?{" "}
+             Don&apost have an account?{" "}
             <Link href='/sign-up' className="text-amber-400 hover:text-amber-300 font-semibold transition-colors">
               Sign up <ArrowRight className="inline h-4 w-4" />
             </Link>

@@ -109,7 +109,7 @@ const VerifyPage = () => {
         </CardContent>
         <CardFooter className="flex justify-center">
           <p className="text-sm text-gray-500">
-            Didn't receive the OTP?{" "}
+            Didn&apost receive the OTP?{" "}
             <a href='#' className="text-blue-600 hover:underline">
               Resend OTP
             </a>

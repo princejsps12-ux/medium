@@ -4,8 +4,8 @@ import { NextRequest } from "next/server";
 
 
 
-export async function DELETE(req:NextRequest,{params}:{params:{id:string}}){
-      const {id}= await params;  // this shows a warning without await, idky why, but await helps,,
+export async function DELETE(req:NextRequest,{params}:{params:Promise<{id:string}>}){
+      const id = (await params).id  // this shows a warning without await, idky why, but await helps,,
             // the recieved id  is the blog id
        try {
         

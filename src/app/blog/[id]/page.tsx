@@ -119,8 +119,7 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import DeleteBlog from "@/components/shared/deleteBlog";
 import EditBlogButton from "@/components/shared/editBlog.button";
 import { useQuery } from "@tanstack/react-query";
- 
-import ErrorPage from "@/app/error/page";
+import ErrorPage from "@/app/errorPage";
 
 // BlogPage Component
 export default function BlogPage() {
@@ -141,7 +140,7 @@ export default function BlogPage() {
     data: thisBlogResponse,
     isPending,
     error,
-    // This is the inbuilt refetch function from react query to retry fetching the blog, i previusly used refetch here, but wasnt used, so i removed it, see the use later
+    refetch// This is the inbuilt refetch function from react query to retry fetching the blog, i previusly used refetch here, but wasnt used, so i removed it, see the use later
   } = useQuery({
     queryKey: ["thisBlog", blogId],
     queryFn: async () => {
@@ -162,12 +161,12 @@ export default function BlogPage() {
   // If there's an error (404), show the Error component
   if (error?.message ==="Blog not found") {
      console.log(" at line 33 this is the erorr at blog[id] ",error)
-    return <ErrorPage error={{ message: "Blog not found", name: "NotFoundError" }} reset={refetch2} />;
+    return <ErrorPage error={{ message: "Blog not found", name: "NotFoundError" }} reset={()=>refetch2} />;// 
   }
 
   // If blog is not found or error is not a 404, show an error message,, this is important i guess, solvse some json issue
   if (!thisBlogResponse) {
-    return <ErrorPage error={{ message: "Blog not found", name: "NotFoundError" }} reset={refetch2} />;
+    return <ErrorPage error={{ message: "Blog not found", name: "NotFoundError" }} reset={()=>refetch2}  />;
   }
 
   // Render the blog content if found

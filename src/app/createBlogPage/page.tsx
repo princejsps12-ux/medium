@@ -6,7 +6,7 @@ import { useForm } from "react-hook-form";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useDropzone } from "react-dropzone";
 import { useRouter } from "next/navigation";
-import axios, { Axios, AxiosError } from "axios";
+import axios, {  AxiosError } from "axios";
 import { z } from "zod";
 import { Loader2 } from "lucide-react";
 import { LuImagePlus } from "react-icons/lu";

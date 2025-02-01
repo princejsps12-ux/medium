@@ -11,6 +11,7 @@ interface customJWT extends JWT {
   isVerified?: boolean;
 }    
 
+
 export const authOptions:NextAuthConfig=  {
 
     providers: [
@@ -21,7 +22,7 @@ export const authOptions:NextAuthConfig=  {
             identifier: { label: "Email or Username", type: "text" },
             password: { label: "Password", type: "password" },
           },
-          async authorize(credentials): Promise<any> {
+          async authorize(credentials): Promise<User | null> {   // this was promise<any> before
             if (!credentials?.identifier || !credentials.password) {
               throw new Error("Missing credentials");
             }
