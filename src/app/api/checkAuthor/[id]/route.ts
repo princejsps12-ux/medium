@@ -8,11 +8,14 @@ export async function POST(
 ) {
   try {
     const session = await auth();
+
     console.log("line 13");
     console.log(session);
 
-    const id= (await params).id
+    // const id= (await params).id
+    const {id} = await params;
     const blogId = id; // Get ID from route params
+
 
     //const session = await GET();
 
