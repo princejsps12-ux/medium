@@ -73,8 +73,6 @@ import { Toaster } from "@/components/ui/toaster";
 import AuthProvider from "@/context/authProvider";
 import QueryclientProvider from "@/lib/queryClientProvider";
 import { Metadata } from "next";
-import Head from "next/head"; // Import the Head component
-
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -95,9 +93,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <>
-      <Head>
-        <link rel="icon" href="/vercel.svg" /> {/* Add favicon link here */}
-      </Head>
+
       <html lang="en">
         <body className={`${geistSans.variable} ${geistMono.variable} antialiased vsc-initialized`}>
           <AuthProvider>
