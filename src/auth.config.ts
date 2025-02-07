@@ -13,7 +13,7 @@ interface customJWT extends JWT {
 
 
 export const authOptions:NextAuthConfig=  {
-
+        trustHost:true,
     providers: [
         CredentialsProvider({
           name:'SignIn',
@@ -25,7 +25,7 @@ export const authOptions:NextAuthConfig=  {
           async authorize(credentials): Promise<User | null> {   // this was promise<any> before
             if (!credentials?.identifier || !credentials.password) {
               throw new Error("Missing credentials");
-            }
+          }
     
             // Find user by email or name
             const user = await prisma.user.findFirst({

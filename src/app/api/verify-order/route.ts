@@ -14,7 +14,7 @@ export async function POST ( request:NextRequest){
 
         const {serverId,razorpay_payment_id,razorpay_signature }= await request.json();
 
-        const verificationResponse = await axios.post('http:localhost:8080/api/v1/verify',{
+        const verificationResponse = await axios.post('http:go-api:8080/api/v1/verify',{
             order_id:serverId,
             razorpay_payment_id:razorpay_payment_id,    
             razorpay_signature:razorpay_signature

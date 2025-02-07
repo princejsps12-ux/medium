@@ -6,7 +6,7 @@ import { NextRequest } from "next/server";
     try{
             const { amount} = await request.json();
              
-            const orderCreationResponse = await axios.post('http:localhost:8080/api/v1/orders',{
+            const orderCreationResponse = await axios.post('http:go-api:8080/api/v1/orders',{
                   amount:amount
             })
             
